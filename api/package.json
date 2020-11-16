@@ -6,8 +6,7 @@
   "scripts": {
     "deploy": "now -t <tu-token>",
     "start:api": "NODE_ENV=production node index.js",
-    "dev:api": "nodemon index.js --ignore db.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:api": "nodemon index.js --ignore db.json"
   },
   "author": "",
   "license": "ISC",
@@ -21,8 +20,5 @@
     "jsonwebtoken": "8.5.1",
     "lowdb": "1.0.0",
     "uuid": "3.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "1.19.0"
   }
 }
