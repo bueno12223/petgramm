@@ -2,7 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   output: {
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -22,7 +23,10 @@ module.exports = {
     ]
   },
   devServer: {
-    hot: true
+    historyApiFallback: {
+      disableDotRule: true
+    },
+    liveReload: true
   },
   plugins: [
     new HtmlWebpackPlugin({

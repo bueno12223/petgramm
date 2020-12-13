@@ -2,6 +2,7 @@ import React from 'react'
 import { Article, ImgWrapper, Img } from './styles'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
+import { Link } from 'react-router-dom'
 
 import { FavButton } from '../FavButton'
 import { useMuationToogleLike } from '../../hooks/useMuationToogleLike'
@@ -12,7 +13,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   const [show, element] = useNearScreen()
   const key = `like-${id}`
   const [liked, setLiked] = useLocalStorage(key, false)
-  const { mutation, mutationLoading, mutationError } = useMuationToogleLike()
+  const { mutation } = useMuationToogleLike()
   const handleFavClick = () => {
     !liked && mutation({
       variables: {
@@ -21,17 +22,16 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     })
     setLiked(!liked)
   }
-  console.log({ mutation, mutationLoading, mutationError })
   return (
     <Article ref={element}>
       {
         show &&
           <>
-            <a href={`/?detail=${id}`}>
+            <Link to={`/?detail=${id}`}>
               <ImgWrapper>
                 <Img src={src} />
               </ImgWrapper>
-            </a>
+            </Link>
 
             <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
           </>
