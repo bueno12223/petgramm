@@ -3,7 +3,7 @@ import { Svg } from './styles'
 import { Link } from 'react-router-dom'
 function SvgComponent (props) {
   return (
-    <Link to='/'>
+    <Link to='/home'>
       <Svg
         width={387.922}
         height={122.021}
